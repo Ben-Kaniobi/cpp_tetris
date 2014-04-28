@@ -7,6 +7,7 @@
 
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
+//#include "Block.hpp"
 
 #define FOREVER      1
 #define EXIT_SUCCESS 0
@@ -31,6 +32,17 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	int Key = 0;
 	InitGraphic(600, 400);
 	//GameHandler::getInstance()->testingMethod();
+
+//	ColorType ColBlack;
+//	ColBlack.Red   = 0;
+//	ColBlack.Green = 0;
+//	ColBlack.Blue  = 0;
+//	ColBlack.Alpha = 0xff;
+//
+//	Block theBlock("bla");
+//
+//	SelectFont("Arial", 12, FONT_NORMAL);
+//	DrawTextXY (10, 22, ColBlack, "i: " + theBlock.geti());
 
 	while(FOREVER) {
 		if(IsKeyPressReady()) {
