@@ -64,7 +64,7 @@
 extern "C" {
 #endif
 
-extern void ErrorHandler(char *Message, const char *FileName, int LineNumber, const char *FunctionName, int Level);
+extern void ErrorHandler(const char *Message, const char *FileName, int LineNumber, const char *FunctionName, int Level);
 
 #ifdef __cplusplus
 }

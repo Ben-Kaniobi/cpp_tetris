@@ -69,6 +69,8 @@ enum CommandEnum {
    CMD_DRAW_CLEAR_ALL        = 18
 };
 
+#define IGNORE_MAXIMAL_RECOMENDED_TELEGRAMLENGTH 0x55000000u
+
 /* module type declaration      */
 
 /* Info for Colorvalues */

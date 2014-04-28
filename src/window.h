@@ -19,11 +19,12 @@
 /*               DrawEmptyRectangle     Draws an empty rectangle             */
 /*               DrawLine               Draws a line                         */
 /*               DrawPixel              Draws a single pixel/point           */
+/*               GetPixel               Gets Color of a pixel/point          */
 /*               DrawText               Draws a text                         */
 /*               SelectFont             Selects the font for text to draw    */
 /*               GetTextDimensions      Returns the space needed for text    */
 /*               GetKeyPress            Waits for a pressed key and returns it*/
-/*               IsKeyPressed           Checks if key has been pressed       */
+/*               IsKeyPressReady        Checks if key has been pressed       */
 /*               GetKeyEvent            Waits for a released or pressed      */
 /*               IsKeyEventReady        Checks if key has been pressed/released*/
 /*               GetMouseState          Get position and buttonstate of mouse*/
@@ -35,6 +36,7 @@
 /*               CreateSubImage         Creates an copy of an image          */
 /*               CreateImage            Creates an Imagebuffer               */
 /*               LoadImage              Creates an Imagebuffer and Loads an Image*/
+/*               SaveImage              Saves an Imagebuffer to a file       */
 /*               DestroyImage           Releases an Imagebuffer              */
 /*               SetEditedImage         Selects buffer for future drawings   */
 /*               DrawImage              Draws the given imagebuffer          */
@@ -44,6 +46,28 @@
 /*               Translate              Translates future drawings           */
 /*               Scale                  Scales future Drawings               */
 /*               ResetTransformations   Future drawings will be direct       */
+/*               GetPixelDataPointer    Gets pointer to Bitmap of an image   */
+/*               AddAlphaMask           Creates transparency mask for image  */
+/*                                                                           */
+/*               PlaySoundOnce          Plays a sound one time               */
+/*               PlaySoundContinuous    Plays a sound continuous             */
+/*               StopContinuousSound    Stops continuous soundplaying        */
+/*               StartContinuousSound   Restarts continuous soundplaying     */
+/*                                                                           */
+/*               OpenFileDialog         Opens universal file dialog          */
+/*               SimpleFileOpenDialog   Simple file load dialog              */
+/*               SimpleFileSaveDialog   Simple file save dialog              */
+/*                                                                           */
+/*  Very Advanced functions:                                                 */
+/*                                                                           */
+/*               SetQtOptions           Directly sets some Qt Flags          */
+/*                                                                           */
+/*               StartTimer             Starts a periodically functioncall   */
+/*               StopTimer              Stops the periodically functioncall  */
+/*                                                                           */
+/*               CreateThread           Multithreading support               */
+/*               Lock(void)             Multithreading synchronisation       */
+/*               Unlock(void)           Multithreading synchronisation       */
 /*                                                                           */
 /*  Author     : I. Oesch                                                    */
 /*                                                                           */
@@ -51,13 +75,13 @@
 /*               28.03.2004  IO Added cpp compatibility in header            */
 /*               29.03.2004  IO Changed char to unsigned char in ColorType   */
 /*               06.10.2010  IO Converted to QT as graphics library          */
-/*                                                                           */
+/*               04.03.2012  IO Added some more functions                    */
+/*                              (Sound, Qt Flags, Timer, Multithreading      */
 /*  File       : window.h                                                    */
 /*                                                                           */
 /*****************************************************************************/
 /* MagicSoft                                                                 */
 /*****************************************************************************/
-
 
 
 /* imports */
@@ -101,22 +125,22 @@ enum KeyCodes {
 };
 
 enum MouseButtonCodes {
-   W_BUTTON_NO_EVENT     =  0x0000,
-   W_BUTTON_NONE         =  0x0000,
-   W_BUTTON_LEFT         =  0x0001,
-   W_BUTTON_MIDDLE       =  0x0002,
-   W_BUTTON_RIGHT        =  0x0004,
-   W_MOUSE_WHEEL_CHANGE  =  0x0008,
-   W_BUTTON_PRESSED      =  0x1000,
-   W_BUTTON_RELEASED     =  0x2000,
-   W_BUTTON_DOUBLECLICK  =  0x4000,
+   W_BUTTON_NO_EVENT     =  0x0000, /* Nothing happend  */
+   W_BUTTON_NONE         =  0x0000, /* also nothing     */
+   W_BUTTON_LEFT         =  0x0001, /* Left Button is or was pressed */
+   W_BUTTON_MIDDLE       =  0x0002, /* Middle Button is or was pressed */
+   W_BUTTON_RIGHT        =  0x0004, /* Right Button is or was pressed */
+   W_MOUSE_WHEEL_CHANGE  =  0x0008, /* Mousewheel has changed */
+   W_BUTTON_PRESSED      =  0x1000, /* Button was pressed */
+   W_BUTTON_RELEASED     =  0x2000, /* Button was released */
+   W_BUTTON_DOUBLECLICK  =  0x4000, /* Button was double clicked */
 
 };
 
 enum MouseWheelKindEnum {
    MW_NONE       = 0x0000,
-   MW_VERTICAL   = 0x0001,
-   MW_HORIZONTAL = 0x0002
+   MW_VERTICAL   = 0x0001, /* Direction of wheele was up-down    */
+   MW_HORIZONTAL = 0x0002  /* Direction of wheele was left-right */
 };
 
 enum FontStyle {
@@ -127,8 +151,8 @@ enum FontStyle {
 };
 
 enum MaskMode {
-   MSK_COLOR_IN  = 0,   /* Color is not masked out */
-   MSK_COLOR_OUT = 1,   /* color is masked out */
+   MSK_COLOR_IN  = 0,   /* Pixel matching Color will get transparent */
+   MSK_COLOR_OUT = 1,   /* Pixel not matching Color will get transparent */
    MSK_AUTO = 2         /* Heuristic mask from border */
 };
 
@@ -141,29 +165,47 @@ enum DrawMode {
    DM_MULTIPLY  = 105    /* Multiplies src with dst pixels */
 };
 
-enum QTOptions {
-    Qt_BackgroundBrushColor = 1,
-    Qt_BackgroundBrushStyle = 2,
-    Qt_BackgroundMode       = 3,
-    Qt_BrushStyle           = 4,
-    Qt_CompositionMode      = 5,
-    Qt_PenBrushStyle        = 6,
-    Qt_PenCapStyle          = 7,
-    Qt_PenCosmetic          = 8,
-    Qt_PenJoinStyle         = 9,
-    Qt_PenStyle             = 10
+enum QTOptions {                 /* Qt Options, see Qt documentation for QPainter */
+    Qt_BackgroundBrushColor = 1, /* Sets Color of background pixels while drawing */
+    Qt_BackgroundBrushStyle = 2, /* Sets Style of background pixels while drawing */
+    Qt_BackgroundMode       = 3, /* Sets Style of background pixels while drawing */
+    Qt_BrushStyle           = 4, /* Sets Style of area filling */
+    Qt_CompositionMode      = 5, /* Sets Composition mode */
+    Qt_PenBrushStyle        = 6, /* Sets Style of line drawing */
+    Qt_PenCapStyle          = 7, /* Sets Style of line end drawing */
+    Qt_PenCosmetic          = 8, /* Sets Pen to exactly 1-Pixel size */
+    Qt_PenJoinStyle         = 9, /* Sets style of line joins */
+    Qt_PenStyle             = 10 /* Sets Style of line drawing */
 };
 
 enum ImageIDEnums {ID_WINDOW = -1};
 
+#define FULLSCREEN_SIZE -1
+
+enum FileDialogMode {
+   FDM_FILE_LOAD = 1,
+   FDM_FILE_SAVE = 2,
+   FDM_DIRECTORY = 3
+};
+
+enum FileDialogOptions {
+  FDO_USE_DEFAULT           = 0x08000000,  /* Just use default behavior for the used dialog */
+  FDO_ShowDirsOnly          = 0x00000001,  /* Only show directories in the file dialog. By default both files and directories are shown. (Valid only in the Directory  file mode.)*/
+  FDO_DontResolveSymlinks   = 0x00000002,  /* Don't resolve symlinks in the file dialog. By default symlinks are resolved. */
+  FDO_DontConfirmOverwrite  = 0x00000004,  /* Don't ask for confirmation if an existing file is selected. By default confirmation is requested.*/
+  FDO_DontUseNativeDialog   = 0x00000010,  /* Don't use the native file dialog. By default, the native file dialog is used unless you use a subclass of QFileDialog that contains the Q_OBJECT macro.*/
+  FDO_ReadOnly              = 0x00000020,  /* Indicates that the model is readonly.*/
+  FDO_HideNameFilterDetails = 0x00000040,  /* Indicates if the file name filter details are hidden or not.*/
+};
+
 /* module type declaration      */
 
 typedef struct MouseInfo {
-  int MousePosX;
-  int MousePosY;
-  int ButtonState;
-  int MouseWheelKind;
-  int MouseWheelDelta;
+  int MousePosX;       /* X position of mouse (Current or when event happened */
+  int MousePosY;       /* Y position of mouse (Current or when event happened */
+  int ButtonState;     /* State or Event of mousebutton */
+  int MouseWheelKind;  /* What kind of mouse wheel generated event (Horizontal or vertical) */
+  int MouseWheelDelta; /* Number of increment the wheel has moved in 1/8 Degree */
 } MouseInfoType;
 
 
@@ -176,7 +218,7 @@ typedef struct ColorType {
 
 typedef struct TextDimension {
   int Length;     /* Length of Text in Pixel */
-  int Overhang; /* Extension to the left of starting point (possible with some italic fonts) */
+  int Overhang;   /* Extension to the left of starting point (possible with some italic fonts) */
   int Up;         /* Height from Baseline in Pixel */
   int Down;       /* Underlength from Baseline in Pixel (for Glyphes with underlength like gpqy) */
 } TextDimensionType;
@@ -222,6 +264,8 @@ extern void DrawEmptyCircle(int x, int y, int Width, int Height, ColorType Color
 extern void DrawFilledRectangle (int x, int y, int Width, int Height, ColorType Color, int LineWidth);
 extern void DrawEmptyRectangle (int x, int y, int Width, int Height, ColorType Color, int LineWidth);
 extern void DrawLine (int x, int y, int tox, int toy, ColorType Color, int LineWidth);
+extern void DrawFilledPolygon (int *Edges, int NumberOfEdges, ColorType Color, int LineWidth);
+extern void DrawPolyLine (int *Edges, int NumberOfEdges, ColorType Color, int LineWidth);
 extern void DrawPixel (int x, int y, ColorType Color);
 extern ColorType GetPixel (int x, int y);
 extern void DrawTextXY (int x, int y, ColorType Color, const char *Text);
@@ -263,13 +307,16 @@ extern void PlaySoundContinuous(const char *FileName);
 extern void StopContinuousSound (void);
 extern void StartContinuousSound (void);
 
-void StartTimer(int IntervalTime, void *Parameter, void (*Handler)(void *));
-void StopTimer(void);
+extern void StartTimer(int IntervalTime, void *Parameter, void (*Handler)(void *));
+extern void StopTimer(void);
 
-void Lock(void);
-void Unlock(void);
-int CreateThread(void *Parameter, void (*Function)(void *));
+extern void Lock(void);
+extern void Unlock(void);
+extern int CreateThread(void *Parameter, void (*Function)(void *));
 
+extern int OpenFileDialog(int Mode, const char *Title, const char *Directory, const char *Filter, const char *PreferredFilter, int Options, char *FilenameBuffer, int MaxNameLength, char *SelectedFilter, int MaxFilterLength);
+#define SimpleFileOpenDialog(Title, NameBuffer, NameBufferLength) OpenFileDialog(FDM_FILE_LOAD, Title, "", "", "", FDO_USE_DEFAULT, NameBuffer, NameBufferLength, NULL, 0)
+#define SimpleFileSaveDialog(Title, NameBuffer, NameBufferLength) OpenFileDialog(FDM_FILE_SAVE, Title, "", "", "", FDO_USE_DEFAULT, NameBuffer, NameBufferLength, NULL, 0)
 
 #ifdef __cplusplus
 }
