@@ -8,19 +8,24 @@
 #ifndef MAP_HPP_
 #define MAP_HPP_
 
+#include "Tetromino.hpp"
+
 class Map {
 private:
 	/* Constructor private */
-	Map(){};
+	Map() {};
 	/* Copy constructor private */
-	Map(Map const&){};
+	Map(Map const&) {};
 	/* Assignment opperator private */
-	void operator=(Map const&){};
+	void operator=(Map const&) {};
 	/* The single object */
 	static Map* TheMap;
 
 public:
 	static Map* getInstance();
+	static bool isTetrominoFree(const Tetromino &TheTetromino);
+	static void removeLine(int yPos);
+	static void mergeToMap(Tetromino &TheTetromino);
 };
 
 #endif /* MAP_HPP_ */

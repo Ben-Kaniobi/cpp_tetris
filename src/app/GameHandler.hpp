@@ -11,17 +11,17 @@
 class GameHandler {
 private:
 	/* Constructor private */
-	GameHandler(){};
+	GameHandler() {};
 	/* Copy constructor private */
-	GameHandler(GameHandler const&){};
-	/* Assignment opperator private */
-	void operator=(GameHandler const&){};
+	GameHandler(GameHandler const&) {};
+	/* Assignment operator private */
+	void operator=(GameHandler const&) {};
 	/* The single object */
-	static GameHandler* TheGameHandler;
+	static GameHandler* theGameHandler;
 
 public:
 	static GameHandler* getInstance();
-	void testingMethod();
+	static void gameOver();
 };
 
 #endif /* GAMEHANDLER_HPP_ */

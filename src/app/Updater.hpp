@@ -11,16 +11,22 @@
 class Updater {
 private:
 	/* Constructor private */
-	Updater(){};
+	Updater() {};
 	/* Copy constructor private */
-	Updater(Updater const&){};
-	/* Assignment opperator private */
-	void operator=(Updater const&){};
+	Updater(Updater const&) {};
+	/* Assignment operator private */
+	void operator=(Updater const&) {};
 	/* The single object */
-	static Updater* TheUpdater;
+	static Updater* theUpdater;
+	/* Tick time in ms */
+	static const unsigned int tickTime = 1000;
 
 public:
 	static Updater* getInstance();
+	static void start();
+	static void stop();
+	static void updateGame();
 };
+
 
 #endif /* UPDATER_HPP_ */

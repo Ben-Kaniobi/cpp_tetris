@@ -8,14 +8,25 @@
 #include "KeyboardHandler.hpp"
 
 /* Global static pointer used to ensure a single instance of the class */
-KeyboardHandler* KeyboardHandler::TheKeyboardHandler = 0;
+KeyboardHandler* KeyboardHandler::theKeyboardHandler = 0;
 
 KeyboardHandler* KeyboardHandler::getInstance() {
 	/* Generate the single object on first call */
-	if (!TheKeyboardHandler) {
-		TheKeyboardHandler = new KeyboardHandler;
+	if (!theKeyboardHandler) {
+		theKeyboardHandler = new KeyboardHandler;
 	}
 	/* Return the single object */
-	return TheKeyboardHandler;
+	return theKeyboardHandler;
 }
 
+void KeyboardHandler::start() {
+	//TODO
+}
+
+void KeyboardHandler::stop() {
+	//TODO
+}
+
+void KeyboardHandler::updateGame() {
+	//TODO
+}

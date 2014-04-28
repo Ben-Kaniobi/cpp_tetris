@@ -11,16 +11,19 @@
 class KeyboardHandler {
 private:
 	/* Constructor private */
-	KeyboardHandler(){};
+	KeyboardHandler() {};
 	/* Copy constructor private */
-	KeyboardHandler(KeyboardHandler const&){};
-	/* Assignment opperator private */
-	void operator=(KeyboardHandler const&){};
+	KeyboardHandler(KeyboardHandler const&) {};
+	/* Assignment operator private */
+	void operator=(KeyboardHandler const&) {};
 	/* The single object */
-	static KeyboardHandler* TheKeyboardHandler;
+	static KeyboardHandler* theKeyboardHandler;
 
 public:
 	static KeyboardHandler* getInstance();
+	static void start();
+	static void stop();
+	static void updateGame();
 };
 
 #endif /* KEYBOARDHANDLER_HPP_ */
