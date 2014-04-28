@@ -21,6 +21,6 @@
 *.app
 
 *.mk
-*.project
+#*.project
 *.txt
 *.d
