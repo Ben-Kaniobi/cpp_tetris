@@ -8,16 +8,7 @@
 #define FOREVER      1
 #define EXIT_SUCCESS 0
 
-using namespace std;
-#include <iostream>
-
-extern "C" {
-	#include "error.h"
-	#include "window.h"
-	#include "communication.h"
-	//#include "ConsoleFunctions.h"
-}
-
+#include "Libraries.hpp"
 #include "GameHandler.hpp"
 
 /* Global static pointer used to ensure a single instance of the class */
