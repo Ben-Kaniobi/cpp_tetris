@@ -19,15 +19,15 @@ Map* Map::getInstance() {
 	return TheMap;
 }
 
-bool isTetrominoFree(const Tetromino &TheTetromino) {
+bool Map::isTetrominoFree(const Tetromino &theTetromino) {
 	//TODO
 	return true;
 }
 
-void removeLine(int yPos) {
+void Map::removeLine(int yPos) {
 	//TODO
 }
 
-void mergeToMap(Tetromino &TheTetromino) {
+void Map::mergeToMap(Tetromino &theTetromino) {
 	//TODO
 }

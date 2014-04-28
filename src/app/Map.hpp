@@ -23,9 +23,9 @@ private:
 
 public:
 	static Map* getInstance();
-	static bool isTetrominoFree(const Tetromino &TheTetromino);
+	static bool isTetrominoFree(const Tetromino &theTetromino);
 	static void removeLine(int yPos);
-	static void mergeToMap(Tetromino &TheTetromino);
+	static void mergeToMap(Tetromino &theTetromino);
 };
 
 #endif /* MAP_HPP_ */

@@ -7,3 +7,17 @@
 
 #include "Line.hpp"
 
+
+bool isSquareFree(int xPos) {
+	//TODO
+	return true;
+}
+
+void Line::setBlock(Block &theBlock, int xPos) {
+	//TODO
+}
+
+bool Line::isFull() {
+	//TODO
+	return true;
+}
