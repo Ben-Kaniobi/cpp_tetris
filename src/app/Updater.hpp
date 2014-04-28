@@ -9,6 +9,18 @@
 #define UPDATER_HPP_
 
 class Updater {
+private:
+	/* Constructor private */
+	Updater(){};
+	/* Copy constructor private */
+	Updater(Updater const&){};
+	/* Assignment opperator private */
+	void operator=(Updater const&){};
+	/* The single object */
+	static Updater* TheUpdater;
+
+public:
+	static Updater* getInstance();
 };
 
 #endif /* UPDATER_HPP_ */

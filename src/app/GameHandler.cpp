@@ -5,11 +5,11 @@
  *      Author: kasen1
  */
 
-#define FOREVER      1
-#define EXIT_SUCCESS 0
-
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
+
+#define FOREVER      1
+#define EXIT_SUCCESS 0
 
 /* Global static pointer used to ensure a single instance of the class */
 GameHandler* GameHandler::TheGameHandler = 0;
