@@ -11,6 +11,18 @@
 #include "Tetromino.hpp"
 
 class Tetromino9: public Tetromino {
+protected:
+	/* Attributes */
+	static const Point2D startPos;
+
+	/* Constructor protected for abstract class */
+	Tetromino9(ColorType Color);
+
+public:
+	/* Destructor has to be virtual */
+	virtual ~Tetromino9() {};
+	/* Dir: true = cw, false = ccw */
+	void rotate(bool Cw);
 };
 
 #endif /* TETROMINO9_HPP_ */

@@ -9,13 +9,6 @@
 #define SQUARE_HPP_
 
 class Square {
-
-private:
-	/* Copy constructor private */
-	Square(Square const&) {};
-	/* Assignment operator private */
-	void operator=(Square const&) {};
-
 protected:
 	/* Constructor protected for abstract class */
 	Square() {};

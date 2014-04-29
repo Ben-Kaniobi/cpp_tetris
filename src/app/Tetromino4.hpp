@@ -9,8 +9,21 @@
 #define TETROMINO4_HPP_
 
 #include "Tetromino.hpp"
+#include "Square.hpp"
 
 class Tetromino4: public Tetromino {
+protected:
+	/* Attributes */
+	static const Point2D startPos;
+
+	/* Constructor protected for abstract class */
+	Tetromino4(ColorType Color);
+
+public:
+	/* Destructor has to be virtual */
+	virtual ~Tetromino4() {};
+	/* Dir: true = cw, false = ccw */
+	void rotate(bool Cw);
 };
 
 #endif /* TETROMINO4_HPP_ */
