@@ -19,6 +19,9 @@ Updater* Updater::getInstance() {
 	return theUpdater;
 }
 
+/* Definition of static const, Tick time in ms */
+const unsigned int Updater::tickTime = 1000;
+
 void Updater::start() {
 	//TODO
 }

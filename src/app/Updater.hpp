@@ -19,7 +19,7 @@ private:
 	/* The single object */
 	static Updater* theUpdater;
 	/* Tick time in ms */
-	static const unsigned int tickTime = 1000;
+	static const unsigned int tickTime;
 
 public:
 	static Updater* getInstance();
