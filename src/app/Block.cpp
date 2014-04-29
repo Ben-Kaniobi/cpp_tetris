@@ -7,6 +7,3 @@
 
 #include "Block.hpp"
 
-// Block::Block(string newi) {
-//	 i = newi;
-// }

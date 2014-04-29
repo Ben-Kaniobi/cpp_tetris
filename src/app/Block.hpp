@@ -11,14 +11,12 @@
 #include "Libraries.hpp"
 #include "Square.hpp"
 
-class Block/*: public Square*/ {
+class Block: public Square {
 private:
-	//ColorType color;
-//	string i;
+	ColorType color;
+
 public:
-//	//Block(ColorType _color) {Block::color = _color;};
-//	Block(string newi);
-//	string geti() {return i;}
+	Block(ColorType Color) {this->color = Color;};
 };
 
 #endif /* BLOCK_HPP_ */

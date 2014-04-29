@@ -9,12 +9,19 @@
 #define SQUARE_HPP_
 
 class Square {
+
 private:
-	/* Define pure virtual method, to make class abstract */
-	virtual void notUsed() = 0;
+	/* Copy constructor private */
+	Square(Square const&) {};
+	/* Assignment operator private */
+	void operator=(Square const&) {};
+
+protected:
+	/* Constructor protected for abstract class */
+	Square() {};
 
 public:
-	/* Destructor has to be virtual too */
+	/* Destructor has to be virtual */
 	virtual ~Square() {};
 };
 
