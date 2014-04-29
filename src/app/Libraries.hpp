@@ -34,6 +34,13 @@ struct Point2D {
 
 /* Global variables */
 extern const ColorType ColBlack;
+extern const ColorType ColOrange;
+extern const ColorType ColCyan;
+extern const ColorType ColRed;
+extern const ColorType ColYellow;
+extern const ColorType ColMagenta;
+extern const ColorType ColGreen;
+extern const ColorType ColBlue;
 
 
 #endif /* LIBRARIES_HPP_ */

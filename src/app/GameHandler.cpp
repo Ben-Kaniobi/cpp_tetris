@@ -32,8 +32,17 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
 	//GameHandler::getInstance()->testingMethod();
 
-	SelectFont("Arial", 12, FONT_NORMAL);
-	DrawTextXY(10, 22, ColBlack, "Testing...");
+	int px = 16;
+	SelectFont("Arial", px-4, FONT_NORMAL);
+	DrawTextXY(10, 1*px, ColBlack,   "Testing...");
+
+	DrawTextXY(10, 2*px, ColOrange,  " Orange");
+	DrawTextXY(10, 3*px, ColCyan,    " Cyan");
+	DrawTextXY(10, 4*px, ColRed,     " Red");
+	DrawTextXY(10, 5*px, ColYellow,  " Yellow");
+	DrawTextXY(10, 6*px, ColMagenta, " Magenta");
+	DrawTextXY(10, 7*px, ColGreen,   " Green");
+	DrawTextXY(10, 8*px, ColBlue,    " Blue");
 
 	while(FOREVER) {
 		if(IsKeyPressReady()) {
