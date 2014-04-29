@@ -7,6 +7,7 @@
 
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
+#include "KeyboardHandler.hpp"
 
 #define FOREVER      1
 #define EXIT_SUCCESS 0
@@ -28,31 +29,48 @@ void GameHandler::gameOver() {
 }
 
 extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
-	int Key = 0;
 	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
-	//GameHandler::getInstance()->testingMethod();
 
 	int px = 16;
 	SelectFont("Arial", px-4, FONT_NORMAL);
 	DrawTextXY(10, 1*px, ColBlack,   "Testing...");
 
-	DrawTextXY(10, 2*px, ColOrange,  " Orange");
-	DrawTextXY(10, 3*px, ColCyan,    " Cyan");
-	DrawTextXY(10, 4*px, ColRed,     " Red");
-	DrawTextXY(10, 5*px, ColYellow,  " Yellow");
-	DrawTextXY(10, 6*px, ColMagenta, " Magenta");
-	DrawTextXY(10, 7*px, ColGreen,   " Green");
-	DrawTextXY(10, 8*px, ColBlue,    " Blue");
-
 	while(FOREVER) {
+//		KeyboardHandler::getInstance()->updateGame();
+
+
+		int Key = 0;
 		if(IsKeyPressReady()) {
 			Key = GetKeyPress();
-			if (Key == W_KEY_CLOSE_WINDOW) {
+			if (Key == W_KEY_CLOSE_WINDOW || Key == W_KEY_ESCAPE) {
 				/* Close the graphic window, cleanup and return */
 				CloseGraphic();
 				return EXIT_SUCCESS;
 			}
+			if (Key == W_KEY_CURSOR_UP) {
+				/* Rotate current tetromino */
+				DrawTextXY(10, 32, ColBlack,   "Rotate");
+			}
+			if (Key == W_KEY_CURSOR_DOWN) {
+				/* Rotate current tetromino */
+				DrawTextXY(10, 52, ColBlack,   "Down");
+			}
+			if (Key == W_KEY_CURSOR_LEFT) {
+				/* Rotate current tetromino */
+				DrawTextXY(10, 72, ColBlack,   "Left");
+			}
+			if (Key == W_KEY_CURSOR_RIGHT) {
+				/* Rotate current tetromino */
+				DrawTextXY(10, 92, ColBlack,   "Right");
+			}
 		}
+
+//		/* Check if window was closed */
+//		if(IsKeyPressReady() && (GetKeyPress() == W_KEY_CLOSE_WINDOW)) {
+//			/* Close the graphic window, cleanup and return */
+//			CloseGraphic();
+//			return EXIT_SUCCESS;
+//		}
 	}
 
 	return EXIT_SUCCESS;
