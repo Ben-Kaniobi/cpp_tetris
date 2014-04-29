@@ -14,6 +14,10 @@
 class TetrominoS: public Tetromino9 {
 private:
 	static const ColorType color;
+
+public:
+	TetrominoS()
+	:Tetromino9(color) {};
 };
 
 #endif /* TETROMINOS_HPP_ */
