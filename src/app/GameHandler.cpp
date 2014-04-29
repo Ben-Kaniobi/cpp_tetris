@@ -29,11 +29,11 @@ void GameHandler::gameOver() {
 
 extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	int Key = 0;
-	InitGraphic(600, 400);
+	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
 	//GameHandler::getInstance()->testingMethod();
 
 	SelectFont("Arial", 12, FONT_NORMAL);
-	DrawTextXY (10, 22, ColBlack, "Testing...");
+	DrawTextXY(10, 22, ColBlack, "Testing...");
 
 	while(FOREVER) {
 		if(IsKeyPressReady()) {
