@@ -13,7 +13,7 @@ Tetromino::Tetromino(Point2D Position) {
 	this->position.y = Position.y;
 	/* Set start rotition */
 	this->rotation = rotZero;
-};
+}
 
 void Tetromino::move(Point2D Dir) {
 	/* TODO: Check if tetromino at new position isfree */

@@ -8,6 +8,7 @@
 #ifndef TETROMINO4_HPP_
 #define TETROMINO4_HPP_
 
+#include <list>
 #include "Tetromino.hpp"
 #include "Block.hpp"
 
@@ -15,14 +16,14 @@ class Tetromino4: public Tetromino {
 protected:
 	/* Attributes */
 	static const Point2D startPos;
-	Square *pSquares[2][2];
+	std::list<Square> squares;
 
 	/* Constructor protected for abstract class */
 	Tetromino4(ColorType Color);
 
 public:
 	/* Destructor has to be virtual */
-	virtual ~Tetromino4() {};
+	virtual ~Tetromino4();
 	/* Dir: true = cw, false = ccw */
 	void rotate(bool Cw);
 };

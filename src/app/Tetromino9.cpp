@@ -11,13 +11,12 @@
 /* Definition of static const, Tick time in ms */
 const Point2D Tetromino9::startPos = {
 	static_cast<int>(MAP_WIDTH/2),
-	-3  /* So it's not visible just yet */
-};
+	-3  /* So it's not visible just yet */};
 
 Tetromino9::Tetromino9(ColorType Color)
 :Tetromino(startPos) {
 	//TODO: inizialise startPos
-};
+}
 
 void Tetromino9::rotate(bool Cw) {
 	/* First call parrent method to update rotation attribute */
