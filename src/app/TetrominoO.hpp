@@ -8,9 +8,12 @@
 #ifndef TETROMINOO_HPP_
 #define TETROMINOO_HPP_
 
+#include "Libraries.hpp"
 #include "Tetromino4.hpp"
 
 class TetrominoO: public Tetromino4 {
+private:
+	static const ColorType color;
 };
 
 #endif /* TETROMINOO_HPP_ */

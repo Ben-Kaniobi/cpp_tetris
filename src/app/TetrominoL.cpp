@@ -7,3 +7,5 @@
 
 #include "TetrominoL.hpp"
 
+/* Definition of static const */
+const ColorType TetrominoL::color = ColRed;
