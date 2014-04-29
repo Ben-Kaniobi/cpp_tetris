@@ -17,11 +17,11 @@ const Point2D Tetromino4::startPos = {
 Tetromino4::Tetromino4(ColorType Color)
 :Tetromino(startPos) {
 //TODO: inizialise startPos
-//	for(int i=0; i<2; i++) {
-//		for(int j=0; j<2; j++) {
-//			Square squares[i][j] = Space();
-//		}
-//	}
+	for(int i=0; i<2; i++) {
+		for(int j=0; j<2; j++) {
+			pSquares[i][j] = new Block(Color);
+		}
+	}
 };
 
 void Tetromino4::rotate(bool Cw) {

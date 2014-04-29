@@ -9,12 +9,13 @@
 #define TETROMINO4_HPP_
 
 #include "Tetromino.hpp"
-#include "Square.hpp"
+#include "Block.hpp"
 
 class Tetromino4: public Tetromino {
 protected:
 	/* Attributes */
 	static const Point2D startPos;
+	Square *pSquares[2][2];
 
 	/* Constructor protected for abstract class */
 	Tetromino4(ColorType Color);

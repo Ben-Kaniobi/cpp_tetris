@@ -5,6 +5,7 @@
  *      Author: nicola
  */
 
+#include "Libraries.hpp"
 #include "TetrominoO.hpp"
 
 /* Definition of static const */
