@@ -17,11 +17,13 @@ extern "C" {
 }
 
 /* Global defines */
-#define MAP_WIDTH    10    /* Number of blocks in x axis */
-#define MAP_HEIGHT   20    /* Number of blocks in y axis */
-#define SQUARE_WIDTH 30    /* Width * height of one block */
-#define WIN_WIDTH    (SQUARE_WIDTH*MAP_WIDTH)
-#define WIN_HEIGHT   (SQUARE_WIDTH*MAP_HEIGHT)
+#define MAP_WIDTH           10    /* Number of blocks in x axis */
+#define MAP_HEIGHT          20    /* Number of blocks in y axis */
+#define SQUARE_WIDTH        30    /* Width * height of one block */
+#define WIN_WIDTH           (SQUARE_WIDTH*MAP_WIDTH)
+#define WIN_HEIGHT          (SQUARE_WIDTH*MAP_HEIGHT)
+#define FONT_SIZE           12    /* pt */
+#define FONT_SIZE_GAME_OVER 22    /* pt */
 
 /* Enums */
 enum Rotation {rotZero, rotNinety, rotOneeighty, rotTwoseventy};

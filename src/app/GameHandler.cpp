@@ -25,15 +25,22 @@ GameHandler* GameHandler::getInstance() {
 }
 
 void GameHandler::gameOver() {
-	//TODO
+	ClearWindow();
+
+	/* Display "Game Over", factor 3.2 is used for centering and depends on the string width */
+	SelectFont("Arial", FONT_SIZE_GAME_OVER, FONT_NORMAL);
+	DrawTextXY((WIN_WIDTH)/2 - FONT_SIZE_GAME_OVER*3.2, (WIN_HEIGHT-FONT_SIZE)/2, ColRed, "Game Over");
+	GameHandler::stop();
 }
 
-void onClose() {
+void GameHandler::stop() {
 	/* Stop the updater */
 	Updater::getInstance()->stop();
 	/* Close the graphic window, cleanup and return */
 	CloseGraphic();
+	running = false;
 }
+
 
 extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Start updater */
@@ -42,13 +49,11 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Start graphics */
 	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
 	ClearWindow();
-	SelectFont("Arial", 12, FONT_NORMAL);
 
 	/* Variable to update between ticks */
 	bool instantUpdate;
 
-
-	while(FOREVER) {
+	while(GameHandler::getInstance()->isRunning()) {
 		instantUpdate = false;
 
 		/* Handle keyboard events */
@@ -82,7 +87,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 
 			case W_KEY_ESCAPE: /* Fall through */
 			case W_KEY_CLOSE_WINDOW:
-				onClose();
+				Updater::getInstance()->stop();
 				return EXIT_SUCCESS;
 
 			default:

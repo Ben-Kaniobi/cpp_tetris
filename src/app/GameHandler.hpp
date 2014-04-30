@@ -11,17 +11,21 @@
 class GameHandler {
 private:
 	/* Constructor private */
-	GameHandler() {};
+	GameHandler() {running = true;};
 	/* Copy constructor private */
-	GameHandler(GameHandler const&) {};
+	GameHandler(GameHandler const&) {running = true;};
 	/* Assignment operator private */
 	void operator=(GameHandler const&) {};
 	/* The single object */
 	static GameHandler* theGameHandler;
+	/* Variable to track if program should be closed */
+	bool running;
 
 public:
 	static GameHandler* getInstance();
-	static void gameOver();
+	void gameOver();
+	bool isRunning() {return running;};
+	void stop();
 };
 
 #endif /* GAMEHANDLER_HPP_ */

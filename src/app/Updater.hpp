@@ -23,9 +23,9 @@ private:
 
 public:
 	static Updater* getInstance();
-	static void start();
-	static void stop();
-	static void updateGame(bool Now);
+	void start();
+	void stop();
+	void updateGame(bool Now);
 };
 
 
