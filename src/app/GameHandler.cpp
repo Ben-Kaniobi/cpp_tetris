@@ -63,9 +63,15 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 		if(IsKeyPressReady()) {
 			Key = GetKeyPress();
 			switch(Key) {
-			case W_KEY_CURSOR_UP:
-				/* Rotate current tetromino */
-				//TODO
+			case W_KEY_F1:
+				/* Rotate current tetromino counter clock wise */
+				pTheTetromino->rotate(true);
+				instantUpdate = true;
+				break;
+
+			case W_KEY_F2:
+				/* Rotate current tetromino clock wise */
+				pTheTetromino->rotate(false);
 				instantUpdate = true;
 				break;
 
