@@ -33,10 +33,11 @@ void Tetromino4::draw() {
 	for(unsigned int i=0; i<n; i++) {
 		for(unsigned int j=0; j<n; j++) {
 			if(squares.at(n*i+j).getType() == typeBlock) {
-				x = ((position.x + j) * SQUARE_WIDTH) + 1;
-				y = ((position.y + i) * SQUARE_WIDTH) + 1;
+				x = (position.x + j) * SQUARE_WIDTH;
+				y = (position.y + i) * SQUARE_WIDTH;
 				if(y >= 0) {
-					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares.at(n*i+j).getColor(), 0);
+					/* Draw block, width - 1 to fix bug when line should have 0 width */
+					DrawFilledRectangle(x, y, SQUARE_WIDTH-1, SQUARE_WIDTH-1, squares.at(n*i+j).getColor(), 0);
 				}
 			}
 		}
