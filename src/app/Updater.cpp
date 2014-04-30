@@ -24,10 +24,10 @@ Updater* Updater::getInstance() {
 const unsigned int Updater::tickTime = 1000;
 
 /* Variable to communicate if update needed */
-volatile bool updateNow = false;
+volatile bool updateTick = false;
 
 static void TimerHandler(void *Param) {
-	updateNow = true;
+	updateTick = true;
 }
 
 void Updater::start() {
@@ -39,11 +39,11 @@ void Updater::stop() {
 }
 
 void Updater::updateGame(bool Now) {
-	if(updateNow || Now) {
+	if(updateTick || Now) {
 
 		//TODO
 
 		/* Reset variable, so the TimerHandler can set it again */
-		updateNow = false;
+		updateTick = false;
 	}
 }
