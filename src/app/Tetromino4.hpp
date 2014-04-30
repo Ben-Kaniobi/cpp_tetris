@@ -8,7 +8,7 @@
 #ifndef TETROMINO4_HPP_
 #define TETROMINO4_HPP_
 
-#include <boost/ptr_container/ptr_list.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include "Tetromino.hpp"
 #include "Block.hpp"
 
@@ -18,7 +18,7 @@ protected:
 	static const Point2D startPos;
 	/* Pointer list to avoid splicing */
 //	std::list<Square*> pSquares;
-	boost::ptr_list<Square> squares;
+	boost::ptr_vector<Square> squares;
 
 	/* Constructor protected for abstract class */
 	Tetromino4(ColorType Color);
@@ -30,6 +30,7 @@ public:
 	virtual ~Tetromino4();
 	/* Dir: true = cw, false = ccw */
 	void rotate(bool Cw);
+	void draw();
 };
 
 #endif /* TETROMINO4_HPP_ */

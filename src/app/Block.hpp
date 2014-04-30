@@ -18,6 +18,7 @@ private:
 public:
 	Block(ColorType Color) {this->color = Color;};
 	squareType getType() {return typeBlock;};
+	ColorType getColor() {return color;};
 };
 
 #endif /* BLOCK_HPP_ */

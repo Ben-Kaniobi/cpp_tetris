@@ -8,6 +8,8 @@
 #ifndef SQUARE_HPP_
 #define SQUARE_HPP_
 
+#include "Libraries.hpp"
+
 /* Definitions of sub classes for getType method */
 enum squareType {typeBlock, typeSpace};
 
@@ -19,6 +21,7 @@ protected:
 public:
 	/* Pure virtual method to make class abstract */
 	virtual squareType getType() = 0;
+	virtual ColorType getColor() = 0;
 	/* Destructor has to be virtual */
 	virtual ~Square() {};
 };

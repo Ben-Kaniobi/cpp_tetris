@@ -10,3 +10,4 @@
 
 /* Definition of static const */
 const ColorType TetrominoO::color = ColYellow;
+

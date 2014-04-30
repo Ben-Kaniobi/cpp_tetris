@@ -13,6 +13,7 @@
 class Space: public Square {
 public:
 	squareType getType() {return typeSpace;};
+	ColorType getColor() {return ColBlack;};
 };
 
 #endif /* SPACE_HPP_ */

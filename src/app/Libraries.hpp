@@ -44,5 +44,8 @@ extern const ColorType ColMagenta;
 extern const ColorType ColGreen;
 extern const ColorType ColBlue;
 
+extern const Point2D DirDown;
+extern const Point2D DirLeft;
+extern const Point2D DirRight;
 
 #endif /* LIBRARIES_HPP_ */

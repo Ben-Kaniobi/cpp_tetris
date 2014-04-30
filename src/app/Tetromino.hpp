@@ -25,6 +25,7 @@ protected:
 public:
 	/* Pure virtual method to make class abstract */
 	virtual tetrominoType getType() = 0;
+	virtual void draw() = 0;
 	/* Destructor has to be virtual */
 	virtual ~Tetromino() {};
 	void move(Point2D Dir);

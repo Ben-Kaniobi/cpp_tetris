@@ -53,6 +53,8 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Variable to update between ticks */
 	bool instantUpdate;
 
+	Tetromino *pTheTetromino = new TetrominoO();
+
 	while(GameHandler::getInstance()->isRunning()) {
 		instantUpdate = false;
 
@@ -68,20 +70,20 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 
 			case W_KEY_CURSOR_DOWN:
-				/* Rotate current tetromino */
-				//TODO
+				/* Move current tetromino down */
+				pTheTetromino->move(DirDown);
 				instantUpdate = true;
 				break;
 
 			case W_KEY_CURSOR_LEFT:
-				/* Rotate current tetromino */
-				//TODO
+				/* Move current tetromino left */
+				pTheTetromino->move(DirLeft);
 				instantUpdate = true;
 				break;
 
 			case W_KEY_CURSOR_RIGHT:
-				/* Rotate current tetromino */
-				//TODO
+				/* Move current tetromino right */
+				pTheTetromino->move(DirRight);
 				instantUpdate = true;
 				break;
 
@@ -97,8 +99,9 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 		}
 
 		/* Update game if neccessary */
-		Updater::getInstance()->updateGame(instantUpdate);
+		Updater::getInstance()->updateGame(static_cast<Tetromino*>(pTheTetromino), instantUpdate);
 	}
 
+	delete pTheTetromino;
 	return EXIT_SUCCESS;
 }

@@ -25,6 +25,7 @@ public:
 	virtual ~Tetromino16() {};
 	/* Dir: true = cw, false = ccw */
 	void rotate(bool Cw);
+	void draw() {}; //TODO
 };
 
 #endif /* TETROMINO16_HPP_ */

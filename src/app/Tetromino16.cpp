@@ -7,6 +7,7 @@
 
 #include "Libraries.hpp"
 #include "Tetromino16.hpp"
+#include "Map.hpp"
 
 /* Definition of static const, Tick time in ms */
 const Point2D Tetromino16::startPos = {
@@ -19,8 +20,14 @@ Tetromino16::Tetromino16(ColorType Color)
 }
 
 void Tetromino16::rotate(bool Cw) {
-	/* First call parrent method to update rotation attribute */
-	Tetromino::rotate(Cw);
-
-	//TODO rearange squares
+//	/* Check if new tetromino is free */
+//	if(Map::getInstance()->isTetrominoFree(*temp)) {
+//		/* Call parrent method to update rotation attribute */
+//		Tetromino::rotate(Cw);
+//
+//		//TODO rearange squares
+//	}
+//	else { /* Tetromino not free */
+//		Map::getInstance()->mergeToMap(*this);
+//	}
 }

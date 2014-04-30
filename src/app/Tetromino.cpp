@@ -23,8 +23,6 @@ void Tetromino::move(Point2D Dir) {
 }
 
 void Tetromino::rotate(bool Cw) {
-	/* TODO: Check if tetromino at new position isfree */
-
 	/* Set new enum value in a switch to avoid casting invalid values */
 	Rotation new_rot;
 	if(Cw) {

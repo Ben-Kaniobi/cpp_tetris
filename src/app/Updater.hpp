@@ -8,6 +8,8 @@
 #ifndef UPDATER_HPP_
 #define UPDATER_HPP_
 
+#include "TetrominoO.hpp"
+
 class Updater {
 private:
 	/* Constructor private */
@@ -25,7 +27,7 @@ public:
 	static Updater* getInstance();
 	void start();
 	void stop();
-	void updateGame(bool Now);
+	void updateGame(Tetromino *TheTetromino, bool Now);
 };
 
 

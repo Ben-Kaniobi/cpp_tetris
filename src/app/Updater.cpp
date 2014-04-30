@@ -38,9 +38,13 @@ void Updater::stop() {
 	StopTimer();
 }
 
-void Updater::updateGame(bool Now) {
+void Updater::updateGame(Tetromino *TheTetromino, bool Now) {
 	if(updateTick || Now) {
+		if(updateTick) {
+			TheTetromino->move(DirDown);
+		}
 
+		TheTetromino->draw();
 		//TODO
 
 		/* Reset variable, so the TimerHandler can set it again */
