@@ -7,20 +7,19 @@
 
 #include "Libraries.hpp"
 #include "Tetromino16.hpp"
-#include "Map.hpp"
 
-#include <iostream>
+const int width = 4;
 
 /* Definition of static const, Tick time in ms */
 const Point2D Tetromino16::startPos = {
 	static_cast<int>(MAP_WIDTH/2) - 2,
-	-4  /* So it's not visible just yet */};
+	-width  /* So it's not visible just yet */};
 
 Tetromino16::Tetromino16(ColorType Color)
 :Tetromino(startPos) {
 	/* Initialise square list */
-	for(unsigned int i=0; i<4; i++) {
-		for(unsigned int j=0; j<4; j++) {
+	for(unsigned int i=0; i<width; i++) {
+		for(unsigned int j=0; j<width; j++) {
 			/* Vertical "I", all squares with j=2 are blocks */
 			if(j == 2) {
 				squares.push_back(new Block(Color));
@@ -45,16 +44,17 @@ void Tetromino16::rotate(bool Cw) {
 //	}
 }
 
+/* Todo, maybe implement in Tetromino */
 void Tetromino16::draw() {
 	int x, y;
 	/* Draw each square */
-	for(unsigned int i=0; i<4; i++) {
-		for(unsigned int j=0; j<4; j++) {
-			if(squares.at(4*i+j).getType() == typeBlock) {
+	for(unsigned int i=0; i<width; i++) {
+		for(unsigned int j=0; j<width; j++) {
+			if(squares.at(width*i+j).getType() == typeBlock) {
 				x = ((position.x + j) * SQUARE_WIDTH) + 1;
 				y = ((position.y + i) * SQUARE_WIDTH) + 1;
 				if(y >= 0) {
-					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares.at(4*i+j).getColor(), 0);
+					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares.at(width*i+j).getColor(), 0);
 				}
 			}
 		}

@@ -7,7 +7,6 @@
 
 #include "Libraries.hpp"
 #include "Tetromino4.hpp"
-#include "Map.hpp"
 
 /* Definition of static const, Tick time in ms */
 const Point2D Tetromino4::startPos = {
