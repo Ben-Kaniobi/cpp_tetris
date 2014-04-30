@@ -43,8 +43,8 @@ void Tetromino4::draw() {
 	for(unsigned int i=0; i<2; i++) {
 		for(unsigned int j=0; j<2; j++) {
 			if(squares[i+j].getType() == typeBlock) {
-				int x = (position.x + i%2) * SQUARE_WIDTH;
-				int y = (position.y + j%2) * SQUARE_WIDTH;
+				int x = ((position.x + i%2) * SQUARE_WIDTH) + 1;
+				int y = ((position.y + j%2) * SQUARE_WIDTH) + 1;
 				if(y >= 0) {
 					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares[i+j].getColor(), 0);
 				}

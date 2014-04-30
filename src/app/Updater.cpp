@@ -44,6 +44,7 @@ void Updater::updateGame(Tetromino *TheTetromino, bool Now) {
 			TheTetromino->move(DirDown);
 		}
 
+		ClearWindow();
 		TheTetromino->draw();
 		//TODO
 
