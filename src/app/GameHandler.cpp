@@ -7,6 +7,7 @@
 
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
+#include "Updater.hpp"
 
 #define FOREVER      1
 #define EXIT_SUCCESS 0
@@ -27,12 +28,22 @@ void GameHandler::gameOver() {
 	//TODO
 }
 
-extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
-	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
+void onClose() {
+	/* Stop the updater */
+	Updater::getInstance()->stop();
+	/* Close the graphic window, cleanup and return */
+	CloseGraphic();
+}
 
-	int px = 16;
-	SelectFont("Arial", px-4, FONT_NORMAL);
-	DrawTextXY(10, 1*px, ColBlack,   "Testing...");
+extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
+	/* Start updater */
+	Updater::getInstance()->start();
+
+	/* Start graphics */
+	InitGraphic(WIN_WIDTH, WIN_HEIGHT);
+	ClearWindow();
+	SelectFont("Arial", 12, FONT_NORMAL);
+
 
 	while(FOREVER) {
 		/* Handle keyboard events */
@@ -62,8 +73,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 
 			case W_KEY_ESCAPE: /* Fall through */
 			case W_KEY_CLOSE_WINDOW:
-				/* Close the graphic window, cleanup and return */
-				CloseGraphic();
+				onClose();
 				return EXIT_SUCCESS;
 
 			default:
@@ -71,6 +81,9 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 			}
 		}
+
+		/* Update game if neccessary */
+		Updater::getInstance()->updateGame();
 	}
 
 	return EXIT_SUCCESS;

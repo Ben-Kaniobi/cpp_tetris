@@ -5,6 +5,7 @@
  *      Author: nicola
  */
 
+#include "Libraries.hpp"
 #include "Updater.hpp"
 
 /* Global static pointer used to ensure a single instance of the class */
@@ -22,14 +23,27 @@ Updater* Updater::getInstance() {
 /* Definition of static const, Tick time in ms */
 const unsigned int Updater::tickTime = 1000;
 
+/* Variable to communicate if update needed */
+volatile bool updateNow = false;
+
+static void TimerHandler(void *Param) {
+	updateNow = true;
+}
+
 void Updater::start() {
-	//TODO
+	StartTimer(tickTime, 0, TimerHandler);
 }
 
 void Updater::stop() {
-	//TODO
+	StopTimer();
 }
 
 void Updater::updateGame() {
-	//TODO
+	if(updateNow) {
+
+		//TODO
+
+		/* Reset variable, so the TimerHandler can set it again */
+		updateNow = false;
+	}
 }
