@@ -8,7 +8,7 @@
 #ifndef TETROMINO4_HPP_
 #define TETROMINO4_HPP_
 
-#include <list>
+#include <boost/ptr_container/ptr_list.hpp>
 #include "Tetromino.hpp"
 #include "Block.hpp"
 
@@ -16,7 +16,9 @@ class Tetromino4: public Tetromino {
 protected:
 	/* Attributes */
 	static const Point2D startPos;
-	std::list<Square> squares;
+	/* Pointer list to avoid splicing */
+//	std::list<Square*> pSquares;
+	boost::ptr_list<Square> squares;
 
 	/* Constructor protected for abstract class */
 	Tetromino4(ColorType Color);

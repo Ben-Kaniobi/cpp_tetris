@@ -17,7 +17,7 @@ Tetromino4::Tetromino4(ColorType Color)
 :Tetromino(startPos) {
 	/* Initialise square list with only blocks */
 	for(unsigned int i=0; i<4; i++) {
-		squares.push_back(Block(Color)); //TODO: This probably creates splicing..?
+		squares.push_back(new Block(Color));
 	}
 }
 

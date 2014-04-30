@@ -10,6 +10,9 @@
 
 #include "Libraries.hpp"
 
+/* Definitions of sub classes for getType method */
+enum tetrominoType {typeTetrominoI, typeTetrominoO, typeTetrominoT, typeTetrominoJ, typeTetrominoL, typeTetrominoS, typeTetrominoZ};
+
 class Tetromino {
 protected:
 	/* Attributes */
