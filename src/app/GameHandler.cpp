@@ -44,8 +44,13 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	ClearWindow();
 	SelectFont("Arial", 12, FONT_NORMAL);
 
+	/* Variable to update between ticks */
+	bool instantUpdate;
+
 
 	while(FOREVER) {
+		instantUpdate = false;
+
 		/* Handle keyboard events */
 		int Key = 0;
 		if(IsKeyPressReady()) {
@@ -53,22 +58,26 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 			switch(Key) {
 			case W_KEY_CURSOR_UP:
 				/* Rotate current tetromino */
-				DrawTextXY(10, 32, ColBlack,   "Rotate");
+				//TODO
+				instantUpdate = true;
 				break;
 
 			case W_KEY_CURSOR_DOWN:
 				/* Rotate current tetromino */
-				DrawTextXY(10, 52, ColBlack,   "Down");
+				//TODO
+				instantUpdate = true;
 				break;
 
 			case W_KEY_CURSOR_LEFT:
 				/* Rotate current tetromino */
-				DrawTextXY(10, 72, ColBlack,   "Left");
+				//TODO
+				instantUpdate = true;
 				break;
 
 			case W_KEY_CURSOR_RIGHT:
 				/* Rotate current tetromino */
-				DrawTextXY(10, 92, ColBlack,   "Right");
+				//TODO
+				instantUpdate = true;
 				break;
 
 			case W_KEY_ESCAPE: /* Fall through */
@@ -83,7 +92,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 		}
 
 		/* Update game if neccessary */
-		Updater::getInstance()->updateGame();
+		Updater::getInstance()->updateGame(instantUpdate);
 	}
 
 	return EXIT_SUCCESS;

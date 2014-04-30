@@ -38,8 +38,8 @@ void Updater::stop() {
 	StopTimer();
 }
 
-void Updater::updateGame() {
-	if(updateNow) {
+void Updater::updateGame(bool Now) {
+	if(updateNow || Now) {
 
 		//TODO
 
