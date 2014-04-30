@@ -8,7 +8,6 @@
 #ifndef BLOCK_HPP_
 #define BLOCK_HPP_
 
-#include "Libraries.hpp"
 #include "Square.hpp"
 
 class Block: public Square {

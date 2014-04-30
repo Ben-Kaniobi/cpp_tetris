@@ -9,14 +9,14 @@
 #define TETROMINO16_HPP_
 
 #include <boost/ptr_container/ptr_vector.hpp>
+#include "Libraries.hpp"
 #include "Tetromino.hpp"
-#include "Block.hpp"
-#include "Space.hpp"
 
 class Tetromino16: public Tetromino {
 protected:
 	/* Attributes */
 	static const Point2D startPos;
+	//static const unsigned int sideNum;
 	/* Pointer list to avoid splicing */
 	boost::ptr_vector<Square> squares;
 

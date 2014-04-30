@@ -9,6 +9,8 @@
 #define TETROMINO_HPP_
 
 #include "Libraries.hpp"
+#include "Block.hpp"
+#include "Space.hpp"
 
 /* Definitions of sub classes for getType method */
 enum tetrominoType {typeTetrominoI, typeTetrominoO, typeTetrominoT, typeTetrominoJ, typeTetrominoL, typeTetrominoS, typeTetrominoZ};
