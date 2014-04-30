@@ -8,6 +8,13 @@
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
 #include "Updater.hpp"
+#include "TetrominoI.hpp"
+#include "TetrominoO.hpp"
+#include "TetrominoT.hpp"
+#include "TetrominoJ.hpp"
+#include "TetrominoL.hpp"
+#include "TetrominoS.hpp"
+#include "TetrominoZ.hpp"
 
 #define FOREVER      1
 #define EXIT_SUCCESS 0
@@ -53,7 +60,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Variable to update between ticks */
 	bool instantUpdate;
 
-	Tetromino *pTheTetromino = new TetrominoO();
+	Tetromino *pTheTetromino = new TetrominoI();
 
 	while(GameHandler::getInstance()->isRunning()) {
 		instantUpdate = false;

@@ -5,16 +5,9 @@
  *      Author: nicola
  */
 
-#include <iostream>
 #include "Libraries.hpp"
 #include "Tetromino4.hpp"
-#include <sstream>
-
-std::string itos(int i){
-	std::stringstream ss;
-	ss<<i;
-	return ss.str();
-}
+#include "Map.hpp"
 
 /* Definition of static const, Tick time in ms */
 const Point2D Tetromino4::startPos = {
@@ -39,14 +32,15 @@ void Tetromino4::rotate(bool Cw) {
 }
 
 void Tetromino4::draw() {
+	int x, y;
 	/* Draw each square */
 	for(unsigned int i=0; i<2; i++) {
 		for(unsigned int j=0; j<2; j++) {
-			if(squares[i+j].getType() == typeBlock) {
-				int x = ((position.x + i%2) * SQUARE_WIDTH) + 1;
-				int y = ((position.y + j%2) * SQUARE_WIDTH) + 1;
+			if(squares.at(4*i+j).getType() == typeBlock) {
+				x = ((position.x + j) * SQUARE_WIDTH) + 1;
+				y = ((position.y + i) * SQUARE_WIDTH) + 1;
 				if(y >= 0) {
-					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares[i+j].getColor(), 0);
+					DrawFilledRectangle(x, y, SQUARE_WIDTH, SQUARE_WIDTH, squares.at(4*i+j).getColor(), 0);
 				}
 			}
 		}

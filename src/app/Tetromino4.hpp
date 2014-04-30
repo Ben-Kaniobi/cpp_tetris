@@ -17,7 +17,6 @@ protected:
 	/* Attributes */
 	static const Point2D startPos;
 	/* Pointer list to avoid splicing */
-//	std::list<Square*> pSquares;
 	boost::ptr_vector<Square> squares;
 
 	/* Constructor protected for abstract class */
