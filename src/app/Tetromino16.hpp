@@ -19,6 +19,8 @@ protected:
 	Tetromino16(ColorType Color);
 
 public:
+	/* Pure virtual method to make class abstract */
+	virtual tetrominoType getType() = 0;
 	/* Destructor has to be virtual */
 	virtual ~Tetromino16() {};
 	/* Dir: true = cw, false = ccw */

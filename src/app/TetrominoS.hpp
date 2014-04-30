@@ -18,6 +18,7 @@ private:
 public:
 	TetrominoS()
 	:Tetromino9(color) {};
+	tetrominoType getType() {return typeTetrominoS;};
 };
 
 #endif /* TETROMINOS_HPP_ */
