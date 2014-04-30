@@ -87,8 +87,8 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 
 			case W_KEY_ESCAPE: /* Fall through */
 			case W_KEY_CLOSE_WINDOW:
-				Updater::getInstance()->stop();
-				return EXIT_SUCCESS;
+				GameHandler::getInstance()->stop();
+				break;
 
 			default:
 				/* Ignore other key events */
