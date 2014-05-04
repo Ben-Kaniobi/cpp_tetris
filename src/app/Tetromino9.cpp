@@ -9,7 +9,7 @@
 
 /* Definition of static consts */
 const Point2D Tetromino9::startPos = {
-	static_cast<int>((MAP_WIDTH-sideNum)/2),
+	static_cast<int>((MAP_WIDTH-(sideNum+1))/2),  /* +1 to compensate for odd sideNum */
 	0-static_cast<int>(sideNum)  /* So it's not visible just yet */};
 
 Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
@@ -20,8 +20,8 @@ Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 		/* Fill square list for TetrominoT */
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
-				/* Vertical "T", all squares with i=1 are blocks and also if i=2 and j=1 */
-				if(i == 1 || (i == 2 && j == 1)) {
+				/* -90 degrees rotated "T", all squares with j=1 are blocks and also if i=1 and j=2 */
+				if(j == 1 || (i == 1 && j == 2)) {
 					pSquares[i][j] = new Block(Color);
 				}
 				else {
@@ -35,8 +35,8 @@ Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 		/* Fill square list for TetrominoJ */
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
-				/* Vertical "J", all squares with j=1 are blocks and also if i=2 and j=0 */
-				if(j == 1 || (i == 2 && j == 0)) {
+				/* Upside-down "J", all squares with j=1 are blocks and also if i=0 and j=2 */
+				if(j == 1 || (i == 0 && j == 2)) {
 					pSquares[i][j] = new Block(Color);
 				}
 				else {
@@ -50,8 +50,8 @@ Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 		/* Fill square list for TetrominoL */
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
-				/* Upside-down "L", all squares with j=1 are blocks and also if i=0 and j=0 */
-				if(j == 1 || (i == 0 && j == 0)) {
+				/* Regular "L", all squares with j=1 are blocks and also if i=2 and j=2 */
+				if(j == 1 || (i == 2 && j == 2)) {
 					pSquares[i][j] = new Block(Color);
 				}
 				else {
@@ -65,8 +65,8 @@ Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 		/* Fill square list for TetrominoS */
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
-				/* -90 degrees rotated "S", all squares with j=2 are spaces and also if i=2 and j=0, just as if i=0 and j=1 */
-				if(j == 2 || (i == 2 && j == 0) || (i == 0 && j == 1)) {
+				/* -90 degrees rotated "S", all squares with j=0 are spaces and also if i=2 and j=1, just as if i=0 and j=2 */
+				if(j == 0 || (i == 2 && j == 1) || (i == 0 && j == 2)) {
 					pSquares[i][j] = new Space();
 				}
 				else {
@@ -80,8 +80,8 @@ Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 		/* Fill square list for TetrominoZ */
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
-				/* 90 degrees rotated "Z", all squares with j=2 are spaces and also if i=0 and j=0, just as if i=2 and j=1 */
-				if(j == 2 || (i == 0 && j == 0) || (i == 2 && j == 1)) {
+				/* 90 degrees rotated "Z", all squares with j=0 are spaces and also if i=0 and j=1, just as if i=2 and j=2 */
+				if(j == 0 || (i == 0 && j == 1) || (i == 2 && j == 2)) {
 					pSquares[i][j] = new Space();
 				}
 				else {
