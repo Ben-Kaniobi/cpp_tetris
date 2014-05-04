@@ -94,6 +94,22 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				}
 				else if(pTheTetromino->getType() == typeTetrominoT) {
 					delete pTheTetromino;
+					pTheTetromino = new TetrominoJ();
+				}
+				else if(pTheTetromino->getType() == typeTetrominoJ) {
+					delete pTheTetromino;
+					pTheTetromino = new TetrominoL();
+				}
+				else if(pTheTetromino->getType() == typeTetrominoL) {
+					delete pTheTetromino;
+					pTheTetromino = new TetrominoS();
+				}
+				else if(pTheTetromino->getType() == typeTetrominoS) {
+					delete pTheTetromino;
+					pTheTetromino = new TetrominoZ();
+				}
+				else {
+					delete pTheTetromino;
 					pTheTetromino = new TetrominoO();
 				}
 				instantUpdate = true;
