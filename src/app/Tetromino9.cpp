@@ -106,11 +106,34 @@ Tetromino9::~Tetromino9() {
 }
 
 void Tetromino9::rotate(bool Cw) {
-	/* First call parent method to update rotation attribute */
+	/* Check if new tetromino is free */
+	//TODO
+	/* Then call parent method to update rotation attribute */
 	Tetromino::rotate(Cw);
 
-	/* Rearrange pSquares */
+//	Square *temp;
+//	temp = pSquares[0][0];
+//	pSquares[0][0] = pSquares[2][0];
+//	pSquares[2][0] = pSquares[2][2];
+//	pSquares[2][2] = pSquares[0][2];
+//	pSquares[0][2] = temp;
+//
+//	temp = pSquares[1][0];
+//	pSquares[1][0] = pSquares[2][1];
+//	pSquares[2][1] = pSquares[1][2];
+//	pSquares[1][2] = pSquares[0][1];
+//	pSquares[0][1] = temp;
 
+//	Square *temp;
+//	for(unsigned int i=0; i<sideNum/2; i++) {
+//		for(unsigned int j=0; j<(sideNum+1)/2; j++) {
+//			temp = pSquares[i][j];
+//			pSquares[i][j] = pSquares[sideNum-1-j][i];
+//			pSquares[sideNum-1-j][i] = pSquares[sideNum-1-i][sideNum-1-j];
+//			pSquares[sideNum-1-i][sideNum-1-j] = pSquares[j][sideNum-1-i];
+//			pSquares[j][sideNum-1-i] = temp;
+//		}
+//	}
 }
 
 void Tetromino9::draw() {

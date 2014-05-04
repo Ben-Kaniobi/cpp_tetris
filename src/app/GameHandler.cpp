@@ -84,7 +84,6 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 
 			case W_KEY_CURSOR_UP:
-				pTheTetromino->rotate(false);
 				/* Testing */
 				if(pTheTetromino->getType() == typeTetrominoO) {
 					delete pTheTetromino;
