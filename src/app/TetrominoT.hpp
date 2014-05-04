@@ -17,7 +17,7 @@ private:
 
 public:
 	TetrominoT()
-	:Tetromino9(color) {};
+	:Tetromino9(color, typeTetrominoT) {};
 	tetrominoType getType() {return typeTetrominoT;};
 };
 

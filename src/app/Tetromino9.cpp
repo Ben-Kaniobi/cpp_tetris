@@ -13,13 +13,12 @@ const Point2D Tetromino9::startPos = {
 	static_cast<int>((MAP_WIDTH-sideNum)/2),
 	0-static_cast<int>(sideNum)  /* So it's not visible just yet */};
 
-Tetromino9::Tetromino9(ColorType Color)
+Tetromino9::Tetromino9(ColorType Color, tetrominoType Type)
 :Tetromino(startPos) {
 	/* Fill square list, depending on type */
-	switch(typeTetrominoT /*TODO: something like this->getType()*/) {
+	switch(Type) {
 	case typeTetrominoT:
 		/* Fill square list for TetrominoT */
-		//TODO: Verify
 		for(unsigned int i=0; i<sideNum; i++) {
 			for(unsigned int j=0; j<sideNum; j++) {
 				/* Vertical "T", all squares with i=1 are blocks and also if i=2 and j=1 */
@@ -34,19 +33,63 @@ Tetromino9::Tetromino9(ColorType Color)
 		break;
 
 	case typeTetrominoJ:
-		//TODO
+		/* Fill square list for TetrominoJ */
+		for(unsigned int i=0; i<sideNum; i++) {
+			for(unsigned int j=0; j<sideNum; j++) {
+				/* Vertical "J", all squares with j=1 are blocks and also if i=2 and j=0 */
+				if(j == 1 || (i == 2 && j == 0)) {
+					squares.push_back(new Block(Color));
+				}
+				else {
+					squares.push_back(new Space());
+				}
+			}
+		}
 		break;
 
 	case typeTetrominoL:
-		//TODO
+		/* Fill square list for TetrominoL */
+		for(unsigned int i=0; i<sideNum; i++) {
+			for(unsigned int j=0; j<sideNum; j++) {
+				/* Upside-down "L", all squares with j=1 are blocks and also if i=0 and j=0 */
+				if(j == 1 || (i == 0 && j == 0)) {
+					squares.push_back(new Block(Color));
+				}
+				else {
+					squares.push_back(new Space());
+				}
+			}
+		}
 		break;
 
 	case typeTetrominoS:
-		//TODO
+		/* Fill square list for TetrominoS */
+		for(unsigned int i=0; i<sideNum; i++) {
+			for(unsigned int j=0; j<sideNum; j++) {
+				/* -90 degrees rotated "S", all squares with j=2 are spaces and also if i=2 and j=0, just as if i=0 and j=1 */
+				if(j == 2 || (i == 2 && j == 0) || (i == 0 && j == 1)) {
+					squares.push_back(new Space());
+				}
+				else {
+					squares.push_back(new Block(Color));
+				}
+			}
+		}
 		break;
 
 	case typeTetrominoZ:
-		//TODO
+		/* Fill square list for TetrominoZ */
+		for(unsigned int i=0; i<sideNum; i++) {
+			for(unsigned int j=0; j<sideNum; j++) {
+				/* 90 degrees rotated "Z", all squares with j=2 are spaces and also if i=0 and j=0, just as if i=2 and j=1 */
+				if(j == 2 || (i == 0 && j == 0) || (i == 2 && j == 1)) {
+					squares.push_back(new Space());
+				}
+				else {
+					squares.push_back(new Block(Color));
+				}
+			}
+		}
 		break;
 	default:
 		/* Not possible */

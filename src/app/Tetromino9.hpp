@@ -21,7 +21,7 @@ protected:
 	boost::ptr_vector<Square> squares;
 
 	/* Constructor protected for abstract class */
-	Tetromino9(ColorType Color);
+	Tetromino9(ColorType Color, tetrominoType Type);
 
 public:
 	/* Pure virtual method to make class abstract */
