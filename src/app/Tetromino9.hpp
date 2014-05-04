@@ -8,18 +8,18 @@
 #ifndef TETROMINO9_HPP_
 #define TETROMINO9_HPP_
 
-#include <boost/ptr_container/ptr_vector.hpp>
 #include "Libraries.hpp"
 #include "Tetromino.hpp"
 
 class Tetromino9: public Tetromino {
-protected:
+private:
 	/* Attributes */
 	static const Point2D startPos;
-	//static const unsigned int sideNum;
-	/* Pointer list to avoid splicing */
-	boost::ptr_vector<Square> squares;
+	static const unsigned int sideNum = 3;
+	/* Pointer array to avoid splicing */
+	Square *pSquares[sideNum][sideNum];
 
+protected:
 	/* Constructor protected for abstract class */
 	Tetromino9(ColorType Color, tetrominoType Type);
 
@@ -27,9 +27,9 @@ public:
 	/* Pure virtual method to make class abstract */
 	virtual tetrominoType getType() = 0;
 	/* Destructor has to be virtual */
-	virtual ~Tetromino9() {};
+	virtual ~Tetromino9();
 	/* Dir: true = cw, false = ccw */
-	void rotate(bool Cw);
+	virtual void rotate(bool Cw);
 	void draw();
 };
 

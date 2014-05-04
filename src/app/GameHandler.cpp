@@ -5,6 +5,7 @@
  *      Author: kasen1
  */
 
+#include <iostream>
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
 #include "Updater.hpp"
@@ -60,7 +61,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Variable to update between ticks */
 	bool instantUpdate;
 
-	Tetromino *pTheTetromino = new TetrominoO();
+	Tetromino *pTheTetromino = new TetrominoL();
 
 	while(GameHandler::getInstance()->isRunning()) {
 		instantUpdate = false;
@@ -83,6 +84,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 
 			case W_KEY_CURSOR_UP:
+				pTheTetromino->rotate(false);
 				/* Testing */
 				if(pTheTetromino->getType() == typeTetrominoO) {
 					delete pTheTetromino;
@@ -149,5 +151,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	}
 
 	delete pTheTetromino;
+
+	std::cout << "EXIT_SUCCESS" << std::endl;
 	return EXIT_SUCCESS;
 }

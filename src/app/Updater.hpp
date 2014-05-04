@@ -8,7 +8,7 @@
 #ifndef UPDATER_HPP_
 #define UPDATER_HPP_
 
-#include "TetrominoO.hpp"
+#include "Tetromino.hpp"
 
 class Updater {
 private:
