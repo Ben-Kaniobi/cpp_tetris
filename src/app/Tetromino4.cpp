@@ -36,11 +36,10 @@ void Tetromino4::rotate(bool Cw) {
 }
 
 void Tetromino4::draw() {
-	unsigned int n = sideNum;
 	int x, y;
 	/* Draw each square, i: y-axis, j: x-axis */
-	for(unsigned int i=0; i<n; i++) {
-		for(unsigned int j=0; j<n; j++) {
+	for(unsigned int i=0; i<sideNum; i++) {
+		for(unsigned int j=0; j<sideNum; j++) {
 			if(pSquares[i][j]->getType() == typeBlock) {
 				x = (position.x + j) * SQUARE_WIDTH;
 				y = (position.y + i) * SQUARE_WIDTH;
