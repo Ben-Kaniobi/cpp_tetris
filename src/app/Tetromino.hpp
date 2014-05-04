@@ -31,7 +31,7 @@ public:
 	/* Destructor has to be virtual */
 	virtual ~Tetromino() {};
 	void move(Point2D Dir);
-	void rotate(bool Cw);
+	virtual void rotate(bool Cw);
 };
 
 #endif /* TETROMINO_HPP_ */
