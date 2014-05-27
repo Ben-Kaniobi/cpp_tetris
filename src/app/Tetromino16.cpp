@@ -39,11 +39,34 @@ Tetromino16::~Tetromino16() {
 
 void Tetromino16::rotate(bool Cw) {
 //	/* Check if new tetromino is free */
-//	if(Map::getInstance()->isTetrominoFree(*temp)) {
+//	if(Map::getInstance()->isTetrominoFree(*tempTetromino)) {
 //		/* Call parent method to update rotation attribute */
 //		Tetromino::rotate(Cw);
-//
-//		//TODO rearange pSquares
+
+		/* Rearange squares */
+		Square *temp;
+		if(Cw) {
+			for(unsigned int i=0; i<sideNum/2; i++) {
+				for(unsigned int j=0; j<(sideNum+1)/2; j++) {
+					temp = pSquares[i][j];
+					pSquares[i][j] = pSquares[sideNum-1-j][i];
+					pSquares[sideNum-1-j][i] = pSquares[sideNum-1-i][sideNum-1-j];
+					pSquares[sideNum-1-i][sideNum-1-j] = pSquares[j][sideNum-1-i];
+					pSquares[j][sideNum-1-i] = temp;
+				}
+			}
+		}
+		else /* CCW */ {
+			for(unsigned int j=0; j<sideNum/2; j++) {
+				for(unsigned int i=0; i<(sideNum+1)/2; i++) {
+					temp = pSquares[j][sideNum-1-i];
+					pSquares[j][sideNum-1-i] = pSquares[sideNum-1-i][sideNum-1-j];
+					pSquares[sideNum-1-i][sideNum-1-j] = pSquares[sideNum-1-j][i];
+					pSquares[sideNum-1-j][i] = pSquares[i][j];
+					pSquares[i][j] = temp;
+				}
+			}
+		}
 //	}
 //	else { /* Tetromino not free */
 //		Map::getInstance()->mergeToMap(*this);
