@@ -5,6 +5,9 @@
  *      Author: kasen1
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include "Libraries.hpp"
 #include "GameHandler.hpp"
@@ -51,6 +54,9 @@ void GameHandler::stop() {
 
 
 extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
+	/* Init random seed with current time */
+	srand(time(NULL));
+
 	/* Start updater */
 	Updater::getInstance()->start();
 
@@ -61,7 +67,18 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Variable to update between ticks */
 	bool instantUpdate;
 
-	Tetromino *pTheTetromino = new TetrominoL();
+	/* Create tetromino with random number in range 0 to 6 */
+	Tetromino *pTheTetromino;
+	switch(rand() % 7) {
+	case 0: pTheTetromino = new TetrominoI(); break;
+	case 1: pTheTetromino = new TetrominoO(); break;
+	case 2: pTheTetromino = new TetrominoT(); break;
+	case 3: pTheTetromino = new TetrominoJ(); break;
+	case 4: pTheTetromino = new TetrominoL(); break;
+	case 5: pTheTetromino = new TetrominoS(); break;
+	case 6: pTheTetromino = new TetrominoZ(); break;
+	default: /* Not possible */ break;
+	}
 
 	while(GameHandler::getInstance()->isRunning()) {
 		instantUpdate = false;
