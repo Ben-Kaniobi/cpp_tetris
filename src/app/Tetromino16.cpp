@@ -1,9 +1,14 @@
-/*
- * Tetromino16.cpp
+/******************************************************************************/
+/*! \file Tetromino16.cpp
+ ******************************************************************************
+ *  \author    kasen1
+ *  \author    plats1
  *
- *  Created on: 28.04.2014
- *      Author: nicola
- */
+ *  \version   0.1.0
+ *
+ *  \date      2014-04-28  v0.0.1  File created
+ *  \date      2014-06-11  v0.1.0  Implemented all but class map and class line
+ ******************************************************************************/
 
 #include "Tetromino16.hpp"
 
@@ -38,6 +43,7 @@ Tetromino16::~Tetromino16() {
 }
 
 void Tetromino16::rotate(bool Cw) {
+//TODO Implement 'Map' first
 //	/* Check if new tetromino is free */
 //	if(Map::getInstance()->isTetrominoFree(*tempTetromino)) {
 //		/* Call parent method to update rotation attribute */
@@ -67,6 +73,7 @@ void Tetromino16::rotate(bool Cw) {
 				}
 			}
 		}
+//TODO Implement 'Map' first
 //	}
 //	else { /* Tetromino not free */
 //		Map::getInstance()->mergeToMap(*this);

@@ -1,9 +1,14 @@
-/*
- * Map.cpp
+/******************************************************************************/
+/*! \file Map.cpp
+ ******************************************************************************
+ *  \author    kasen1
+ *  \author    plats1
  *
- *  Created on: 28.04.2014
- *      Author: nicola
- */
+ *  \version   0.1.0
+ *
+ *  \date      2014-04-28  v0.0.1  File created
+ *  \date      2014-06-11  v0.1.0  Implemented all but class map and class line
+ ******************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,16 +44,4 @@ void Map::removeLine(int yPos) {
 
 void Map::mergeToMap(Tetromino &theTetromino) {
 	//TODO
-
-// 	/* Create tetromino with random number in range 0 to 6 */
-// 	switch(rand() % 7) {
-// 	case 0: theTetromino = TetrominoI(); break;
-// 	case 1: theTetromino = TetrominoO(); break;
-// 	case 2: theTetromino = TetrominoT(); break;
-// 	case 3: theTetromino = TetrominoJ(); break;
-// 	case 4: theTetromino = TetrominoL(); break;
-// 	case 5: theTetromino = TetrominoS(); break;
-// 	case 6: theTetromino = TetrominoZ(); break;
-// 	default: /* Not possible */ break;
-// 	}
 }
