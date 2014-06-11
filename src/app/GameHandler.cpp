@@ -113,7 +113,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 
 			case W_KEY_CURSOR_UP:
-				/* TODO: This mode/key is just for testing */
+				// TODO: This mode/key is just for testing
 				if(pTheTetromino->getType() == typeTetrominoO) {
 					delete pTheTetromino;
 					pTheTetromino = new TetrominoI();

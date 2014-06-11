@@ -28,7 +28,7 @@ public:
 	Line(int YPos);
 	~Line();
 	bool isSquareFree(int xPos);
-	void setBlock(Block &theBlock, int xPos);
+	void setBlock(ColorType color, int xPos);
 	bool isFull();
 };
 

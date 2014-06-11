@@ -29,15 +29,39 @@ Line::~Line() {
 }
 
 bool Line::isSquareFree(int xPos) {
-	//TODO
-	return true;
+	/* Check input range */
+	if(xPos < 0 || xPos >= MAP_WIDTH) {
+		return false;
+	}
+	/* Check type */
+	else if(pSquares[xPos]->getType() == typeBlock) {
+		return false;
+	}
+	else /* typeSpace */ {
+		return true;
+	}
 }
 
-void Line::setBlock(Block &theBlock, int xPos) {
-	//TODO
+void Line::setBlock(ColorType color, int xPos) {
+	/* Check input range */
+	if(xPos < 0 || xPos >= MAP_WIDTH) {
+		return;
+	}
+
+	/* Delete the old object */
+	delete pSquares[xPos];
+	/* Create the new object */
+	pSquares[xPos] = new Block(color);
 }
 
 bool Line::isFull() {
-	//TODO
+	/* Check every square */
+	for(unsigned int i=0; i<MAP_WIDTH; i++) {
+		if(pSquares[i]->getType() == typeSpace) {
+			return false;
+		}
+		/* Else continue loop */
+	}
+	/* No square was a space, so the line is full (of blocks) */
 	return true;
 }
