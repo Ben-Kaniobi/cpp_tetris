@@ -27,6 +27,7 @@ private:
 	bool running;
 
 public:
+	~GameHandler();
 	static GameHandler* getInstance();
 	void gameOver();
 	bool isRunning() {return running;};

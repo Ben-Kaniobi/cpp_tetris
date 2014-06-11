@@ -29,6 +29,7 @@ private:
 	static const unsigned int tickTime;
 
 public:
+	~Updater();
 	static Updater* getInstance();
 	void start();
 	void stop();

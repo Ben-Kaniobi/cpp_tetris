@@ -31,6 +31,13 @@
 /* Global static pointer used to ensure a single instance of the class */
 GameHandler* GameHandler::theGameHandler = 0;
 
+GameHandler::~GameHandler() {
+	/* Stop the game */
+	this->stop();
+	/* Delete the single object */
+	delete theGameHandler;
+}
+
 GameHandler* GameHandler::getInstance() {
 	/* Generate the single object on first call */
 	if (!theGameHandler) {
@@ -57,7 +64,7 @@ void GameHandler::stop() {
 	running = false;
 }
 
-
+/* Main function (not part of the GameHandler class) */
 extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 	/* Init random seed with current time */
 	srand(time(NULL));
@@ -106,7 +113,7 @@ extern "C" int gfxmain(int argc, char* argv[], const char *ApplicationPath) {
 				break;
 
 			case W_KEY_CURSOR_UP:
-				/* Testing */
+				/* TODO: This mode/key is just for testing */
 				if(pTheTetromino->getType() == typeTetrominoO) {
 					delete pTheTetromino;
 					pTheTetromino = new TetrominoI();

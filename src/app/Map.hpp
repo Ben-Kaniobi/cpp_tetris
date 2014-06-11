@@ -14,19 +14,23 @@
 #define MAP_HPP_
 
 #include "Tetromino.hpp"
+#include "Line.hpp"
 
 class Map {
 private:
 	/* Constructor private */
-	Map() {};
+	Map();
 	/* Copy constructor private */
 	Map(Map const&) {};
 	/* Assignment opperator private */
 	void operator=(Map const&) {};
 	/* The single object */
-	static Map* TheMap;
+	static Map* theMap;
+	/* Pointer array to avoid splicing */
+	Line *pLines[MAP_HEIGHT];
 
 public:
+	~Map();
 	static Map* getInstance();
 	bool isTetrominoFree(const Tetromino &theTetromino);
 	void removeLine(int yPos);

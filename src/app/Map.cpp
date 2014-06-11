@@ -22,15 +22,31 @@
 #include "TetrominoZ.hpp"
 
 /* Global static pointer used to ensure a single instance of the class */
-Map* Map::TheMap = 0;
+Map* Map::theMap = 0;
+
+Map::Map() {
+	/* Fill lines list with only spaces */
+	for(unsigned int i=0; i<MAP_HEIGHT; i++) {
+		pLines[i] = new Line(i);
+	}
+}
+
+Map::~Map() {
+	/* Clean up every created object in pLines array */
+	for(unsigned int i=0; i<MAP_HEIGHT; i++) {
+		delete pLines[i];
+	}
+	/* Delete the single object */
+	delete theMap;
+}
 
 Map* Map::getInstance() {
-	if (!TheMap) {
+	if (!theMap) {
 		/* Generate the single object on first call */
-		TheMap = new Map;
+		theMap = new Map;
 	}
 	/* Return the single object */
-	return TheMap;
+	return theMap;
 }
 
 bool Map::isTetrominoFree(const Tetromino &theTetromino) {

@@ -13,13 +13,20 @@
 #ifndef LINE_HPP_
 #define LINE_HPP_
 
+#include "Libraries.hpp"
 #include "Block.hpp"
+#include "Space.hpp"
 
 class Line {
 private:
+	/* Attributes */
 	int yPos;
+	/* Pointer array to avoid splicing */
+	Square *pSquares[MAP_WIDTH];
 
 public:
+	Line(int YPos);
+	~Line();
 	bool isSquareFree(int xPos);
 	void setBlock(Block &theBlock, int xPos);
 	bool isFull();

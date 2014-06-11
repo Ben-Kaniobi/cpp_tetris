@@ -12,7 +12,23 @@
 
 #include "Line.hpp"
 
-bool isSquareFree(int xPos) {
+Line::Line(int YPos) {
+	this->yPos = YPos;
+
+	/* Fill square list with only spaces */
+	for(unsigned int i=0; i<MAP_WIDTH; i++) {
+		pSquares[i] = new Space();
+	}
+}
+
+Line::~Line() {
+	/* Clean up every created object in pSquares array */
+	for(unsigned int i=0; i<MAP_WIDTH; i++) {
+		delete pSquares[i];
+	}
+}
+
+bool Line::isSquareFree(int xPos) {
 	//TODO
 	return true;
 }

@@ -16,15 +16,6 @@
 /* Global static pointer used to ensure a single instance of the class */
 Updater* Updater::theUpdater = 0;
 
-Updater* Updater::getInstance() {
-	/* Generate the single object on first call */
-	if (!theUpdater) {
-		theUpdater = new Updater;
-	}
-	/* Return the single object */
-	return theUpdater;
-}
-
 /* Definition of static const, Tick time in ms */
 const unsigned int Updater::tickTime = 1000;
 
@@ -33,6 +24,20 @@ volatile bool updateTick = false;
 
 static void TimerHandler(void *Param) {
 	updateTick = true;
+}
+
+Updater::~Updater() {
+	/* Delete the single object */
+	delete theUpdater;
+}
+
+Updater* Updater::getInstance() {
+	/* Generate the single object on first call */
+	if (!theUpdater) {
+		theUpdater = new Updater;
+	}
+	/* Return the single object */
+	return theUpdater;
 }
 
 void Updater::start() {
